@@ -1,0 +1,113 @@
+/**************************************************************
+GENERAL STYLING
+***************************************************************/
+html,
+body,
+.container {
+    font-family: Arial, sans-serif;
+    height: 95%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+main {
+    height: 95%;
+}
+
+/**************************************************************
+MAP STYLING
+***************************************************************/
+#map {
+    height: 100%;
+}
+
+
+/**************************************************************
+HEADER
+***************************************************************/
+h4,
+hr {
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    margin-bottom: 10px;
+}
+
+#showListOfLocations,
+#showListOfLocations:visited {
+    color: #777;
+    line-height: 50px;
+    margin: 15px 0;
+    text-decoration: none;
+    display: none;
+}
+
+#showListOfLocations:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+/**************************************************************
+MARKERS LIST STYLING
+***************************************************************/
+a,
+a:visited {
+    color: #777;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+
+/**************************************************************
+RESPONSIVE STYLING
+***************************************************************/
+@media screen and (max-width: 991px) {
+    #showListOfLocations {
+        display: inline;
+    }
+
+    #markers_holder {
+        position: absolute;
+        top: 55px;
+        width: 300px;
+        background-color: white;
+
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #markers_holder {
+        position: absolute;
+        top: 225px;
+        width: 300px;
+        background-color: white;
+
+    }
+}
+
+/**************************************************************
+LIST PLACES STYLING
+***************************************************************/
+#cityViewItem {
+    color: purple;
+}
+
+#cineItem {
+    color: orange;
+}
+
+#restaurantItem {
+    color: blue;
+}
+
+#parkItem {
+    color: yellow;
+}

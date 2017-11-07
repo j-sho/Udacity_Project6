@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berlin Map Location</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Top responsive menu for mobil devices -->
+    <div class="row responsiveHeader">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Markers<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a data-bind="click: hideMarkers" href="#" >Hide All</a></li>
+                            <li class="divider"></li>
+                            <li><a data-bind="click: showAllMarkers" href="#">Show All</a></li>
+                            <li class="divider"></li>
+                            <li><a data-bind="click: showCategoryMarkers.bind($data, 'restaurant')" href="#">Restaurants</a></li>
+                            <li class="divider"></li>
+                            <li><a data-bind="click: showCategoryMarkers.bind($data, 'cine')" href="#">Cines</a></li>
+                            <li class="divider"></li>
+                            <li><a data-bind="click: showCategoryMarkers.bind($data, 'park')" href="#">Parks</a></li>
+                            <li class="divider"></li>
+                            <li><a data-bind="click: showCategoryMarkers.bind($data, 'cityView')" href="#">City Views</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="input-group">
+                        <input data-bind="value: filter, valueUpdate: 'afterkeydown'" id="places-search" type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                        <button data-bind="click: textSearchPlaces" type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </form>
+                <a id="showListOfLocations" href="#" data-bind="click: showLocations">List of locations</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container row">
+        <main class="col-md-8">
+            <!-- Google Map area -->
+            <div id="map"></div>
+        </main>
+        <aside class="col-md-4" id="markers_holder" id="hideListOfLocations" data-bind="visible: detailsEnabled, click: hideLocations">
+            <!-- Markers list -->
+            <div>
+                <hr>
+                <h4 id="cityViewItem">City Views</h4>
+                <ul data-bind="foreach: filteredItems" class="marker_list">
+                    <!-- ko if: category === 'cityView' -->
+                    <li><a data-bind="text: name, click: $parent.showItemMarkers.bind(name)" href=""></a></li>
+                    <!-- /ko -->
+                </ul>
+                <hr>
+                <h4 id="cineItem">Cines</h4>
+                <ul data-bind="foreach: filteredItems" class="marker_list">
+                    <!-- ko if: category === 'cine' -->
+                    <li><a data-bind="text: name, click: $parent.showItemMarkers.bind(name)" href=""></a></li>
+                    <!-- /ko -->
+                </ul>
+                <hr>
+                <h4 id="restaurantItem">Restaurants</h4>
+                <ul data-bind="foreach: filteredItems" class="marker_list">
+                    <!-- ko if: category === 'restaurant' -->
+                    <li><a data-bind="text: name, click: $parent.showItemMarkers.bind(name)" href=""></a></li>
+                    <!-- /ko -->
+                </ul>
+                <hr>
+                <h4 id="parkItem">Parks</h4>
+                <ul data-bind="foreach: filteredItems" class="marker_list">
+                    <!-- ko if: category === 'park' -->
+                    <li><a data-bind="text: name, click: $parent.showItemMarkers.bind(name)" href=""></a></li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </aside>
+    </div>
+    <script src="js/model.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/lib/knockout-3.2.0.js"></script>
+    <script async defer
+    src=
+    "https://maps.googleapis.com/maps/api/js?language=en&libraries=places,geometry,drawing&key=AIzaSyAb2gUhJf0T3FxucpiLEK8LKNkMihzUxHA&v=3&callback=initMap" onerror="ErrorMethod()">
+    </script>
+</body>
+</html>
